@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Movies.Models;
-using Movies.Services.Movies.Remote;
+using Movies.Services.Movies;
 using Movies.ViewModels.Base;
 
 namespace Movies.ViewModels
@@ -9,11 +9,11 @@ namespace Movies.ViewModels
     public class MovieDetailsViewModel : BaseViewModel
     {
         private Movie _movie;
-        private IMoviesService _moviesService;
+        private IMoviesManager _moviesManager;
 
-        public MovieDetailsViewModel(IMoviesService moviesService)
+        public MovieDetailsViewModel(IMoviesManager moviesManager)
         {
-            _moviesService = moviesService;
+            _moviesManager = moviesManager;
         }
 
         public Movie Movie
@@ -33,7 +33,7 @@ namespace Movies.ViewModels
                 IsBusy = true;
 
                 var movie = (Movie)navigationData;
-                Movie = await _moviesService.FindByIdAsync(movie.Id, "en");
+                Movie = await _moviesManager.FindByIdAsync(movie.Id);
 
 
                 IsBusy = false;

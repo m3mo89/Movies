@@ -1,4 +1,5 @@
 ﻿using System;
+using Movies.Services.Movies;
 using Movies.Services.Movies.Local;
 using Movies.Services.Movies.Remote;
 using Movies.Services.Navigation;
@@ -28,6 +29,7 @@ namespace Movies.ViewModels.Base
             _container.RegisterType<INavigationService, NavigationService>();
             _container.RegisterType<IMoviesService, MoviesService>();
             _container.RegisterType<IMoviesLocalDataService, MoviesLocalDataService>();
+            _container.RegisterType<IMoviesManager, MoviesManager>();
 
             _container.RegisterType<MoviesListViewModel>();
             _container.RegisterType<MovieDetailsViewModel>();

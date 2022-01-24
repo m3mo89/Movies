@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Localization;
 using Movies.Models;
-using Movies.Services.Movies.Remote;
+using Movies.Services.Movies;
 using Movies.Services.Navigation;
 using Movies.ViewModels.Base;
 using Xamarin.Forms;
@@ -15,12 +15,12 @@ namespace Movies.ViewModels
     {
         private ObservableCollection<Movie> _movies;
         private INavigationService _navigationService;
-        private IMoviesService _moviesService;
+        private IMoviesManager _moviesManager;
 
-        public MoviesListViewModel(INavigationService navigationService, IMoviesService moviesService)
+        public MoviesListViewModel(INavigationService navigationService, IMoviesManager moviesManager)
         {
             _navigationService = navigationService;
-            _moviesService = moviesService;
+            _moviesManager = moviesManager;
 
             SelectedMovieCommand = new Command(SelectedMovie);
             GetTopRatedCommand = new Command(async () => await GetTopRatedAsync(null));
@@ -59,10 +59,12 @@ namespace Movies.ViewModels
         private async void GetPopularAsync(object obj)
         {
             IsBusy = true;
-                
-            var result = await _moviesService.GetPopularAsync(1, "en");
 
-            Movies = new ObservableCollection<Movie>(result.Results);
+            await _moviesManager.DeleteAsync();
+
+            var result = await _moviesManager.GetPopularAsync(1, "en", false);
+
+            Movies = new ObservableCollection<Movie>(result);
             
 
             IsBusy = false;
@@ -72,9 +74,11 @@ namespace Movies.ViewModels
         {
             IsBusy = true;
 
-            var result = await _moviesService.GetTopRatedAsync(1,"en");
+            await _moviesManager.DeleteAsync();
 
-            Movies = new ObservableCollection<Movie>(result.Results);
+            var result = await _moviesManager.GetTopRatedAsync(1,"en", false);
+
+            Movies = new ObservableCollection<Movie>(result);
             
 
             IsBusy = false;
