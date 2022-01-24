@@ -23,9 +23,15 @@ namespace Movies.ViewModels
             _moviesService = moviesService;
 
             SelectedMovieCommand = new Command(SelectedMovie);
+            GetTopRatedCommand = new Command(async () => await GetTopRatedAsync(null));
+            GetPopularCommand = new Command(GetPopularAsync);
         }
 
         public Command SelectedMovieCommand { get; }
+
+        public Command GetTopRatedCommand { get; }
+
+        public Command GetPopularCommand { get; }
 
         public ObservableCollection<Movie> Movies
         {
@@ -39,13 +45,7 @@ namespace Movies.ViewModels
 
         public override async Task InitializeAsync(object navigationData)
         {
-            IsBusy = true;
-
-            var result = await _moviesService.GetTopRatedAsync(1, "en");
-
-            Movies = new ObservableCollection<Movie>(result.Results);
-
-            IsBusy = false;
+             await GetTopRatedAsync(navigationData);
         }
 
         private void SelectedMovie(object obj)
@@ -54,6 +54,30 @@ namespace Movies.ViewModels
             {
                 _navigationService.NavigateToAsync<MovieDetailsViewModel>(obj);
             }
+        }
+
+        private async void GetPopularAsync(object obj)
+        {
+            IsBusy = true;
+                
+            var result = await _moviesService.GetPopularAsync(1, "en");
+
+            Movies = new ObservableCollection<Movie>(result.Results);
+            
+
+            IsBusy = false;
+        }
+
+        private async Task GetTopRatedAsync(object obj)
+        {
+            IsBusy = true;
+
+            var result = await _moviesService.GetTopRatedAsync(1,"en");
+
+            Movies = new ObservableCollection<Movie>(result.Results);
+            
+
+            IsBusy = false;
         }
     }
 }

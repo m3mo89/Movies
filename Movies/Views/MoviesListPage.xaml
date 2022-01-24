@@ -8,8 +8,8 @@
     Title="{localization:Localized PopMovies}"
     x:Name="MoviesPage">
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Top Rated" Order="Secondary"/>
-        <ToolbarItem Text="Popular" Order="Secondary"/>
+        <ToolbarItem Text="Top Rated" Order="Secondary" Command="{Binding GetTopRatedCommand}"/>
+        <ToolbarItem Text="Popular" Order="Secondary" Command="{Binding GetPopularCommand}"/>
     </ContentPage.ToolbarItems>
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <CollectionView IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
