@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Threading.Tasks;
+using Movies.Services;
+using Movies.ViewModels.Base;
 using Movies.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -10,8 +13,13 @@ namespace Movies
         public App()
         {
             InitializeComponent();
+            InitNavigation();
+        }
 
-            MainPage = new NavigationPage(new MoviesListPage());
+        private Task InitNavigation()
+        {
+            var navigationService = Locator.Instance.Resolve<INavigationService>();
+            return navigationService.InitializeAsync();
         }
 
         protected override void OnStart()

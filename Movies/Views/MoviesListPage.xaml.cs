@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Movies.ViewModels;
 using Xamarin.Forms;
 
 namespace Movies.Views
@@ -10,9 +7,6 @@ namespace Movies.Views
     {
         public MoviesListPage()
         {
-            var vm = new MoviesListViewModel();
-            Task.Run(async () => await vm.InitializeAsync(null));
-            BindingContext = vm;
             InitializeComponent();
         }
     }
