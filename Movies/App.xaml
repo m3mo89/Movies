@@ -6,5 +6,6 @@
     <Application.Resources>
         <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
         <converters:MovieImageConverter x:Key="MovieImageConverter" />
+        <converters:ReleaseDateConverter x:Key="ReleaseDateConverter" />
     </Application.Resources>
 </Application>
