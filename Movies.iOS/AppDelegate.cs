@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using FFImageLoading.Forms.Platform;
 using Foundation;
+using Movies.iOS.Services;
+using Movies.Services.LocalData;
 using UIKit;
 
 namespace Movies.iOS
@@ -23,10 +25,16 @@ namespace Movies.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            RegisterTypes();
             CachedImageRenderer.Init();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);
+        }
+
+        public void RegisterTypes()
+        {
+            App.RegisterType<ISQLitePlatform, iOSSQLitePlatform>();
         }
     }
 }

@@ -22,6 +22,11 @@ namespace Movies
             return navigationService.InitializeAsync();
         }
 
+        public static void RegisterType<TInterface, T>() where TInterface : class where T : class, TInterface
+        {
+            Locator.Instance.RegisterType<TInterface, T>();
+        }
+
         protected override void OnStart()
         {
         }
