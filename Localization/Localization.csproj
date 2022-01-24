@@ -22,4 +22,7 @@
       <DependentUpon>AppResources.es-MX.resx</DependentUpon>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="sqlite-net-pcl" />
+  </ItemGroup>
 </Project>
