@@ -5,8 +5,8 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using FFImageLoading.Forms.Platform;
-using Movies.Services.LocalData;
 using Movies.Droid.Services;
+using Movies.Services.Database;
 
 namespace Movies.Droid
 {

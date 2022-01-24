@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Movies.Models;
 
-namespace Movies.Services.LocalData
+namespace Movies.Services.Movies.Local
 {
     public interface IMoviesLocalDataService
     {

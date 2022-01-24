@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Movies.Models;
-using Movies.Services.Movies;
+using Movies.Services.Movies.Remote;
 using Movies.ViewModels.Base;
 
 namespace Movies.ViewModels

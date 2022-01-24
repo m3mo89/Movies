@@ -1,7 +1,7 @@
 ﻿using System;
 using SQLite;
 
-namespace Movies.Services.LocalData
+namespace Movies.Services.Database
 {
     public interface ISQLitePlatform
     {

@@ -1,6 +1,6 @@
 ﻿using System;
-using Movies.Services.LocalData;
-using Movies.Services.Movies;
+using Movies.Services.Movies.Local;
+using Movies.Services.Movies.Remote;
 using Movies.Services.Navigation;
 using Movies.Services.Request;
 using Unity;

@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using Movies.Models;
+using Movies.Services.Database;
 
-namespace Movies.Services.LocalData
+namespace Movies.Services.Movies.Local
 {
     public class MoviesLocalDataService : IMoviesLocalDataService
     {

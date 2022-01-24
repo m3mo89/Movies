@@ -34,6 +34,9 @@
     <None Remove="Converters\" />
     <None Remove="Services\LocalData\" />
     <None Remove="sqlite-net-pcl" />
+    <None Remove="Services\Movies\Remote\" />
+    <None Remove="Services\Movies\Local\" />
+    <None Remove="Services\Database\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
@@ -46,7 +49,9 @@
     <Folder Include="Services\Request\" />
     <Folder Include="Services\Movies\" />
     <Folder Include="Converters\" />
-    <Folder Include="Services\LocalData\" />
+    <Folder Include="Services\Movies\Remote\" />
+    <Folder Include="Services\Movies\Local\" />
+    <Folder Include="Services\Database\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Localization\Localization.csproj" />

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Movies.Models;
 using Movies.Services.Request;
 
-namespace Movies.Services.Movies
+namespace Movies.Services.Movies.Remote
 {
     public class MoviesService : IMoviesService
     {

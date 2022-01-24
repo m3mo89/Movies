@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Localization;
 using Movies.Models;
-using Movies.Services.Movies;
+using Movies.Services.Movies.Remote;
 using Movies.Services.Navigation;
 using Movies.ViewModels.Base;
 using Xamarin.Forms;

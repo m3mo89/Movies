@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Movies.Models;
 
-namespace Movies.Services.Movies
+namespace Movies.Services.Movies.Remote
 {
     public interface IMoviesService
     {
