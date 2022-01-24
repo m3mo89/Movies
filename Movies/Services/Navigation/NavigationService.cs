@@ -6,7 +6,7 @@ using Movies.ViewModels.Base;
 using Movies.Views;
 using Xamarin.Forms;
 
-namespace Movies.Services
+namespace Movies.Services.Navigation
 {
     public class NavigationService : INavigationService
     {

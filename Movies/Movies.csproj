@@ -15,6 +15,7 @@
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Unity" Version="5.11.10" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Extensions\" />
@@ -25,6 +26,9 @@
     <None Remove="Xamarin.FFImageLoading.Forms" />
     <None Remove="Services\" />
     <None Remove="Unity" />
+    <None Remove="Services\Navigation\" />
+    <None Remove="Services\Request\" />
+    <None Remove="Newtonsoft.Json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
@@ -33,6 +37,8 @@
     <Folder Include="ViewModels\" />
     <Folder Include="ViewModels\Base\" />
     <Folder Include="Services\" />
+    <Folder Include="Services\Navigation\" />
+    <Folder Include="Services\Request\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Localization\Localization.csproj" />

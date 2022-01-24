@@ -1,5 +1,5 @@
 ﻿using System;
-using Movies.Services;
+using Movies.Services.Navigation;
 using Unity;
 
 namespace Movies.ViewModels.Base

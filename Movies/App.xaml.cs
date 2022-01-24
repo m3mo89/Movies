@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Movies.Services;
+using Movies.Services.Navigation;
 using Movies.ViewModels.Base;
 using Movies.Views;
 using Xamarin.Forms;

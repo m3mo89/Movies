@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Movies.ViewModels.Base;
 
-namespace Movies.Services
+namespace Movies.Services.Navigation
 {
     public interface INavigationService
     {

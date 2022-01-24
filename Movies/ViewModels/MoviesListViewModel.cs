@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Movies.Models;
-using Movies.Services;
+using Movies.Services.Navigation;
 using Movies.ViewModels.Base;
 using Xamarin.Forms;
 
