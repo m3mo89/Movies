@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Movies.Models;
+using Movies.Services.Movies;
 using Movies.ViewModels.Base;
 
 namespace Movies.ViewModels
@@ -8,9 +9,11 @@ namespace Movies.ViewModels
     public class MovieDetailsViewModel : BaseViewModel
     {
         private Movie _movie;
+        private IMoviesService _moviesService;
 
-        public MovieDetailsViewModel()
+        public MovieDetailsViewModel(IMoviesService moviesService)
         {
+            _moviesService = moviesService;
         }
 
         public Movie Movie
@@ -23,19 +26,18 @@ namespace Movies.ViewModels
             }
         }
 
-        public override Task InitializeAsync(object navigationData)
+        public override async Task InitializeAsync(object navigationData)
         {
             if (navigationData is Movie)
             {
                 IsBusy = true;
 
                 var movie = (Movie)navigationData;
-                Movie = movie;
+                Movie = await _moviesService.FindByIdAsync(movie.Id, "en");
+
 
                 IsBusy = false;
             }
-
-            return Task.FromResult(true);
         }
     }
 }

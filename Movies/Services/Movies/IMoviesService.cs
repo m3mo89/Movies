@@ -9,5 +9,7 @@ namespace Movies.Services.Movies
         Task<SearchResponse<Movie>> GetTopRatedAsync(int pageNumber, string language);
 
         Task<SearchResponse<Movie>> GetPopularAsync(int pageNumber, string language);
+
+        Task<Movie> FindByIdAsync(int movieId, string language);
     }
 }

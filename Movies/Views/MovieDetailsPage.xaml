@@ -24,7 +24,7 @@
                     </StackLayout>
 
                     <ffimageloading:CachedImage Grid.Row="1" Grid.Column="0" 
-			            Source = "{Binding Movie.PosterPath}"
+			            Source="{Binding Movie.PosterPath, Converter={StaticResource MovieImageConverter}}"
                         VerticalOptions="Fill"
                         Aspect="AspectFit"
                         Margin="20,5">

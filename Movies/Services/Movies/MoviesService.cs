@@ -48,5 +48,22 @@ namespace Movies.Services.Movies
                 return new SearchResponse<Movie>();
             }
         }
+
+        public async Task<Movie> FindByIdAsync(int movieId, string language)
+        {
+            try
+            {
+                string uri = $"{AppSettings.ApiUrl}movie/{movieId}?api_key={AppSettings.ApiKey}&language={language}";
+
+                Movie response = await _requestProvider.GetAsync<Movie>(uri);
+
+                return response;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+                return new Movie();
+            }
+        }
     }
 }
