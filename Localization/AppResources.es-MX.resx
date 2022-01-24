@@ -16,4 +16,26 @@
 	<data name="PopMovies" xml:space="preserve">
         <value>Peliculas Populares</value>
     </data>
+	<data name="TopRated" xml:space="preserve">
+        <value>Mas Valorados</value>
+    </data>
+	<data name="Popular" xml:space="preserve">
+        <value>Populares</value>
+    </data>
+	<data name="NoDataAvailable" xml:space="preserve">
+        <value>No hay datos disponibles.</value>
+    </data>
+
+	<data name="ReleaseDate" xml:space="preserve">
+        <value>Lanzamiento</value>
+    </data>
+	<data name="Popularity" xml:space="preserve">
+        <value>Popularidad</value>
+    </data>
+	<data name="VoteAverage" xml:space="preserve">
+        <value>Voto Promedio</value>
+    </data>
+	<data name="VoteCount" xml:space="preserve">
+        <value>Votos</value>
+    </data>
 </root>

@@ -3,6 +3,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:localization="clr-namespace:Movies.Extensions"
     x:Class="Movies.Views.MovieDetailsPage">
     <ContentPage.Content>
         <Grid>
@@ -31,13 +32,13 @@
                     </ffimageloading:CachedImage>
 
                     <StackLayout Grid.Row="1" Grid.Column="1" Margin="20,0" VerticalOptions="CenterAndExpand">
-                        <Label Text="Release Date" FontAttributes="Bold" FontSize="Large" TextColor="Black"/>
+                        <Label Text="{localization:Localized ReleaseDate}" FontAttributes="Bold" FontSize="Large" TextColor="Black"/>
                         <Label Text="{Binding Movie.ReleaseDate, Converter={StaticResource ReleaseDateConverter}}" FontSize="Medium" TextColor="Black"/>
-                        <Label Text="Popularity" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                        <Label Text="{localization:Localized Popularity}" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
                         <Label Text="{Binding Movie.Popularity}" FontAttributes="Italic" FontSize="Small" TextColor="Black"/>
-                        <Label Text="Vote Average" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                        <Label Text="{localization:Localized VoteAverage}" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
                         <Label Text="{Binding Movie.VoteAverage}"  FontSize="Small" TextColor="Black"/>
-                        <Label Text="Vote Count" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
+                        <Label Text="{localization:Localized VoteCount}" FontAttributes="Bold" FontSize="Medium" TextColor="Black"/>
                         <Label Text="{Binding Movie.VoteCount}"  FontSize="Small" TextColor="Black"/>
                     </StackLayout>
                     <Label Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"

@@ -52,5 +52,47 @@ namespace Localization {
                 return ResourceManager.GetString("PopMovies", resourceCulture);
             }
         }
+        
+        public static string TopRated {
+            get {
+                return ResourceManager.GetString("TopRated", resourceCulture);
+            }
+        }
+        
+        public static string Popular {
+            get {
+                return ResourceManager.GetString("Popular", resourceCulture);
+            }
+        }
+        
+        public static string NoDataAvailable {
+            get {
+                return ResourceManager.GetString("NoDataAvailable", resourceCulture);
+            }
+        }
+        
+        public static string ReleaseDate {
+            get {
+                return ResourceManager.GetString("ReleaseDate", resourceCulture);
+            }
+        }
+        
+        public static string Popularity {
+            get {
+                return ResourceManager.GetString("Popularity", resourceCulture);
+            }
+        }
+        
+        public static string VoteAverage {
+            get {
+                return ResourceManager.GetString("VoteAverage", resourceCulture);
+            }
+        }
+        
+        public static string VoteCount {
+            get {
+                return ResourceManager.GetString("VoteCount", resourceCulture);
+            }
+        }
     }
 }
