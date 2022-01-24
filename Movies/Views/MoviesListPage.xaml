@@ -4,8 +4,53 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     x:Class="Movies.Views.MoviesListPage"
     xmlns:localization="clr-namespace:Movies.Extensions"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     Title="{localization:Localized PopMovies}">
-    <ContentPage.Content>
-        <Label Text="{localization:Localized PopMovies}" TextColor="Black"/>
-    </ContentPage.Content>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Top Rated" Order="Secondary"/>
+        <ToolbarItem Text="Popular" Order="Secondary"/>
+    </ContentPage.ToolbarItems>
+    <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <CollectionView
+            ItemsSource="{Binding Movies, Mode=TwoWay}"
+            ItemsLayout="VerticalGrid, 2" >
+            <CollectionView.EmptyView>
+                <ContentView>
+                    <StackLayout HorizontalOptions="CenterAndExpand"
+                                 VerticalOptions="CenterAndExpand">
+                        <Label Text="No Data Available"
+                               Margin="10,25,10,10"
+                               TextColor="Red"
+                               FontAttributes="Bold"
+                               FontSize="18"
+                               HorizontalOptions="Fill"
+                               HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </ContentView>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnSpacing="0" RowSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ffimageloading:CachedImage
+                            Source="https://es.web.img2.acsta.net/medias/nmedia/18/90/04/41/20078157.jpg" 
+                            Aspect="AspectFill"
+                            HeightRequest="260"
+                            HorizontalOptions="FillAndExpand">
+                        </ffimageloading:CachedImage>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <ActivityIndicator
+                IsVisible="{Binding IsBusy}"
+                IsRunning="{Binding IsBusy}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+    </Grid>
 </ContentPage>
