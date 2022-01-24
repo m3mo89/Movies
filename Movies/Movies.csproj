@@ -29,6 +29,8 @@
     <None Remove="Services\Navigation\" />
     <None Remove="Services\Request\" />
     <None Remove="Newtonsoft.Json" />
+    <None Remove="Services\Movies\" />
+    <None Remove="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
@@ -39,6 +41,8 @@
     <Folder Include="Services\" />
     <Folder Include="Services\Navigation\" />
     <Folder Include="Services\Request\" />
+    <Folder Include="Services\Movies\" />
+    <Folder Include="Converters\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Localization\Localization.csproj" />

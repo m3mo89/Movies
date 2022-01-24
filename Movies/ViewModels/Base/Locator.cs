@@ -1,5 +1,7 @@
 ﻿using System;
+using Movies.Services.Movies;
 using Movies.Services.Navigation;
+using Movies.Services.Request;
 using Unity;
 
 namespace Movies.ViewModels.Base
@@ -21,7 +23,9 @@ namespace Movies.ViewModels.Base
         protected Locator()
         {
             _container = new UnityContainer();
+            _container.RegisterType<IRequestService, RequestService>();
             _container.RegisterType<INavigationService, NavigationService>();
+            _container.RegisterType<IMoviesService, MoviesService>();
 
             _container.RegisterType<MoviesListViewModel>();
             _container.RegisterType<MovieDetailsViewModel>();
