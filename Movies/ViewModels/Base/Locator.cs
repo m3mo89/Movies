@@ -24,6 +24,7 @@ namespace Movies.ViewModels.Base
             _container.RegisterType<INavigationService, NavigationService>();
 
             _container.RegisterType<MoviesListViewModel>();
+            _container.RegisterType<MovieDetailsViewModel>();
         }
 
         public void RegisterType<TInterface, T>() where TInterface : class where T : class, TInterface

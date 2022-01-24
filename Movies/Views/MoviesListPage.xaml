@@ -5,7 +5,8 @@
     x:Class="Movies.Views.MoviesListPage"
     xmlns:localization="clr-namespace:Movies.Extensions"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    Title="{localization:Localized PopMovies}">
+    Title="{localization:Localized PopMovies}"
+    x:Name="MoviesPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Top Rated" Order="Secondary"/>
         <ToolbarItem Text="Popular" Order="Secondary"/>
@@ -38,11 +39,14 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <ffimageloading:CachedImage
-                            Source="https://es.web.img2.acsta.net/medias/nmedia/18/90/04/41/20078157.jpg" 
+                            Source="{Binding PosterPath}" 
                             Aspect="AspectFill"
                             HeightRequest="260"
                             HorizontalOptions="FillAndExpand">
                         </ffimageloading:CachedImage>
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:Reference MoviesPage}, Path= BindingContext.SelectedMovieCommand}" CommandParameter="{Binding .}" />
+                        </Grid.GestureRecognizers>
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

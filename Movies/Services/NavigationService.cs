@@ -92,6 +92,7 @@ namespace Movies.Services
         private void CreatePageViewModelMappings()
         {
             _mappings.Add(typeof(MoviesListViewModel), typeof(MoviesListPage));
+            _mappings.Add(typeof(MovieDetailsViewModel), typeof(MovieDetailsPage));
         }
     }
 }
