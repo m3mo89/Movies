@@ -25,6 +25,7 @@ namespace Movies.ViewModels
             SelectedMovieCommand = new Command(SelectedMovie);
             GetTopRatedCommand = new Command(async () => await GetTopRatedAsync(null));
             GetPopularCommand = new Command(GetPopularAsync);
+            ChangeLanguageCommand = new Command(ChangeLanguage);
         }
 
         public Command SelectedMovieCommand { get; }
@@ -32,6 +33,8 @@ namespace Movies.ViewModels
         public Command GetTopRatedCommand { get; }
 
         public Command GetPopularCommand { get; }
+
+        public Command ChangeLanguageCommand { get; }
 
         public ObservableCollection<Movie> Movies
         {
@@ -60,9 +63,11 @@ namespace Movies.ViewModels
         {
             IsBusy = true;
 
+            bool forceRequest = !AppResources.Culture.Name.Equals(AppSettings.USLanguage);
+
             await _moviesManager.DeleteAsync();
 
-            var result = await _moviesManager.GetPopularAsync(1, "en", false);
+            var result = await _moviesManager.GetPopularAsync(AppSettings.Pages, AppResources.Culture.TwoLetterISOLanguageName, forceRequest);
 
             Movies = new ObservableCollection<Movie>(result);
             
@@ -74,14 +79,43 @@ namespace Movies.ViewModels
         {
             IsBusy = true;
 
+            bool forceRequest = !AppResources.Culture.Name.Equals(AppSettings.USLanguage);
+
             await _moviesManager.DeleteAsync();
 
-            var result = await _moviesManager.GetTopRatedAsync(1,"en", false);
+            var result = await _moviesManager.GetTopRatedAsync(AppSettings.Pages, AppResources.Culture.TwoLetterISOLanguageName, forceRequest);
 
             Movies = new ObservableCollection<Movie>(result);
             
 
             IsBusy = false;
+        }
+
+        private void ChangeLanguage(object obj)
+        {
+            Device.BeginInvokeOnMainThread(async () =>
+            {
+                string action = await Application.Current.MainPage.DisplayActionSheet(AppResources.SelectLanguage, AppResources.Cancel, null, AppResources.Spanish, AppResources.English);
+
+                if (action.Equals(AppResources.Spanish))
+                {
+                    SetLanguage(AppSettings.MXLanguage);
+                }
+
+                if (action.Equals(AppResources.English))
+                {
+                    SetLanguage(AppSettings.USLanguage);
+                }
+
+                await _navigationService.NavigateToAsync<MoviesListViewModel>();
+            });
+        }
+
+        public void SetLanguage(string selectedLanguage)
+        {
+            AppResources.Culture = new System.Globalization.CultureInfo(selectedLanguage);
+
+            AppProperties.SetProperty(AppSettings.SelectedLanguage, selectedLanguage);
         }
     }
 }

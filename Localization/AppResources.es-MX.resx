@@ -38,4 +38,20 @@
 	<data name="VoteCount" xml:space="preserve">
         <value>Votos</value>
     </data>
+
+	<data name="ChangeLanguage" xml:space="preserve">
+        <value>Lenguaje</value>
+    </data>
+	<data name="SelectLanguage" xml:space="preserve">
+        <value>Seleccionar Lenguaje</value>
+    </data>
+	<data name="Cancel" xml:space="preserve">
+        <value>Cancelar</value>
+    </data>
+	<data name="Spanish" xml:space="preserve">
+        <value>Español</value>
+    </data>
+	<data name="English" xml:space="preserve">
+        <value>Ingles</value>
+    </data>
 </root>

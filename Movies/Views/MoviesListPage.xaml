@@ -8,6 +8,7 @@
     Title="{localization:Localized PopMovies}"
     x:Name="MoviesPage">
     <ContentPage.ToolbarItems>
+        <ToolbarItem Text="{localization:Localized ChangeLanguage}" Order="Primary" Command="{Binding ChangeLanguageCommand}"/>
         <ToolbarItem Text="{localization:Localized TopRated}" Order="Secondary" Command="{Binding GetTopRatedCommand}"/>
         <ToolbarItem Text="{localization:Localized Popular}" Order="Secondary" Command="{Binding GetPopularCommand}"/>
     </ContentPage.ToolbarItems>
