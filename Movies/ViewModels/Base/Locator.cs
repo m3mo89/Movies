@@ -1,4 +1,5 @@
 ﻿using System;
+using Movies.Services.LocalData;
 using Movies.Services.Movies;
 using Movies.Services.Navigation;
 using Movies.Services.Request;
@@ -26,6 +27,7 @@ namespace Movies.ViewModels.Base
             _container.RegisterType<IRequestService, RequestService>();
             _container.RegisterType<INavigationService, NavigationService>();
             _container.RegisterType<IMoviesService, MoviesService>();
+            _container.RegisterType<IMoviesLocalDataService, MoviesLocalDataService>();
 
             _container.RegisterType<MoviesListViewModel>();
             _container.RegisterType<MovieDetailsViewModel>();
