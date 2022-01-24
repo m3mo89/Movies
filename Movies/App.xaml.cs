@@ -1,4 +1,5 @@
 ﻿using System;
+using Movies.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace Movies
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MoviesListPage());
         }
 
         protected override void OnStart()

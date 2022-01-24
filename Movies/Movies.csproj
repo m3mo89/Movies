@@ -16,9 +16,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Extensions\" />
+    <None Remove="Views\" />
+    <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
+    <Folder Include="Views\" />
+    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Localization\Localization.csproj" />
