@@ -12,7 +12,7 @@
         <ToolbarItem Text="Popular" Order="Secondary"/>
     </ContentPage.ToolbarItems>
     <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <CollectionView
+        <CollectionView IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}"
             ItemsSource="{Binding Movies, Mode=TwoWay}"
             ItemsLayout="VerticalGrid, 2" >
             <CollectionView.EmptyView>

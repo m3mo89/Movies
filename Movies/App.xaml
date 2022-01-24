@@ -4,6 +4,7 @@
              xmlns:converters="clr-namespace:Movies.Converters;assembly=Movies"
              x:Class="Movies.App">
     <Application.Resources>
+        <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
         <converters:MovieImageConverter x:Key="MovieImageConverter" />
     </Application.Resources>
 </Application>
