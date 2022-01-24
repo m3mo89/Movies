@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Localization;
+using Movies.CommandImplementation;
+using Movies.CommandImplementation.Commands;
+using Movies.CommandImplementation.Receivers;
 using Movies.Models;
 using Movies.Services.Movies;
 using Movies.Services.Navigation;
@@ -99,23 +102,22 @@ namespace Movies.ViewModels
 
                 if (action.Equals(AppResources.Spanish))
                 {
-                    SetLanguage(AppSettings.MXLanguage);
+                    ILanguageReceiver spanishLanguageReceiver = new SpanishLanguageReceiver();
+                    SetLanguageCommand spanishLanguageCommand = new SetLanguageCommand(spanishLanguageReceiver);
+                    Invoker invoker = new Invoker(spanishLanguageCommand);
+                    invoker.Execute();
                 }
 
                 if (action.Equals(AppResources.English))
                 {
-                    SetLanguage(AppSettings.USLanguage);
+                    ILanguageReceiver englishLanguageReceiver = new EnglishLanguageReceiver();
+                    SetLanguageCommand englishLanguageCommand = new SetLanguageCommand(englishLanguageReceiver);
+                    Invoker invoker = new Invoker(englishLanguageCommand);
+                    invoker.Execute();
                 }
 
                 await _navigationService.NavigateToAsync<MoviesListViewModel>();
             });
-        }
-
-        public void SetLanguage(string selectedLanguage)
-        {
-            AppResources.Culture = new System.Globalization.CultureInfo(selectedLanguage);
-
-            AppProperties.SetProperty(AppSettings.SelectedLanguage, selectedLanguage);
         }
     }
 }

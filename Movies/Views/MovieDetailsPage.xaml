@@ -7,7 +7,7 @@
     x:Class="Movies.Views.MovieDetailsPage">
     <ContentPage.Content>
         <Grid>
-            <ScrollView>
+            <ScrollView IsVisible="{Binding IsBusy, Converter={StaticResource InverseBoolConverter}}">
                 <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" RowSpacing="0" ColumnSpacing="0">
                     <Grid.RowDefinitions>
                         <RowDefinition Height=".14*"/>

@@ -37,6 +37,9 @@
     <None Remove="Services\Movies\Remote\" />
     <None Remove="Services\Movies\Local\" />
     <None Remove="Services\Database\" />
+    <None Remove="CommandImplementation\" />
+    <None Remove="CommandImplementation\Receiver\" />
+    <None Remove="CommandImplementation\Commands\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Extensions\" />
@@ -52,6 +55,9 @@
     <Folder Include="Services\Movies\Remote\" />
     <Folder Include="Services\Movies\Local\" />
     <Folder Include="Services\Database\" />
+    <Folder Include="CommandImplementation\" />
+    <Folder Include="CommandImplementation\Receivers\" />
+    <Folder Include="CommandImplementation\Commands\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Localization\Localization.csproj" />
