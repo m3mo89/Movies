@@ -1,29 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
-using Movies.Models;
-using Movies.Services.Database;
+using Movies.Models;                                                                         
+using SQLite;
 
 namespace Movies.Services.Movies.Local
 {
     public class MoviesLocalDataService : IMoviesLocalDataService
     {
-        private readonly ISQLitePlatform _database;
+        private readonly SQLiteAsyncConnection _database;
+        private string _path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "moviesapp.db3");
 
-        public MoviesLocalDataService(ISQLitePlatform platform)
+        public MoviesLocalDataService()
         {
-            _database = platform;
-            var con = _database.GetConnection();
-            con.CreateTable<Movie>();
-            con.Close();
+            _database = new SQLiteAsyncConnection(_path);
+
+            CreateTables();
+        }
+
+        private void CreateTables()
+        {
+            _database.CreateTableAsync<Movie>();
         }
 
         public async Task<IReadOnlyList<Movie>> GetMoviesAsync()
         {
             try
             {
-                return await _database.GetConnectionAsync().Table<Movie>().ToListAsync();
+                return await _database.Table<Movie>().ToListAsync();
             }
             catch (Exception ex)
             {
@@ -36,7 +42,7 @@ namespace Movies.Services.Movies.Local
         {
             try
             {
-                return await _database.GetConnectionAsync().InsertAllAsync(movies) > 0;
+                return await _database.InsertAllAsync(movies) > 0;
             }
             catch (Exception ex)
             {
@@ -49,7 +55,7 @@ namespace Movies.Services.Movies.Local
         {
             try
             {
-                return await _database.GetConnectionAsync().Table<Movie>().FirstOrDefaultAsync(x => x.Id == movieId);
+                return await _database.Table<Movie>().FirstOrDefaultAsync(x => x.Id == movieId);
             }
             catch (Exception ex)
             {
@@ -62,7 +68,7 @@ namespace Movies.Services.Movies.Local
         {
             try
             {
-                return await _database.GetConnectionAsync().DeleteAllAsync<Movie>() > 0;
+                return await _database.DeleteAllAsync<Movie>() > 0;
             }
             catch (Exception ex)
             {

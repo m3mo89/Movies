@@ -1,12 +1,9 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using FFImageLoading.Forms.Platform;
-using Movies.Droid.Services;
-using Movies.Services.Database;
 
 namespace Movies.Droid
 {
@@ -19,7 +16,7 @@ namespace Movies.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            RegisterTypes();
+            
             CachedImageRenderer.Init(true);
             LoadApplication(new App());
         }
@@ -29,11 +26,6 @@ namespace Movies.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-
-        public void RegisterTypes()
-        {
-            App.RegisterType<ISQLitePlatform, AndroidSQLitePlatform>();
         }
     }
 }
