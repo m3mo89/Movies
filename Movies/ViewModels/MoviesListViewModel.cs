@@ -99,22 +99,21 @@ namespace Movies.ViewModels
             Device.BeginInvokeOnMainThread(async () =>
             {
                 string action = await Application.Current.MainPage.DisplayActionSheet(AppResources.SelectLanguage, AppResources.Cancel, null, AppResources.Spanish, AppResources.English);
+                ILanguageReceiver languageReceiver = null;
 
                 if (action.Equals(AppResources.Spanish))
                 {
-                    ILanguageReceiver spanishLanguageReceiver = new SpanishLanguageReceiver();
-                    SetLanguageCommand spanishLanguageCommand = new SetLanguageCommand(spanishLanguageReceiver);
-                    Invoker invoker = new Invoker(spanishLanguageCommand);
-                    invoker.Execute();
+                    languageReceiver = new SpanishLanguageReceiver();
                 }
 
                 if (action.Equals(AppResources.English))
                 {
-                    ILanguageReceiver englishLanguageReceiver = new EnglishLanguageReceiver();
-                    SetLanguageCommand englishLanguageCommand = new SetLanguageCommand(englishLanguageReceiver);
-                    Invoker invoker = new Invoker(englishLanguageCommand);
-                    invoker.Execute();
+                    languageReceiver = new EnglishLanguageReceiver();
                 }
+
+                SetLanguageCommand setLanguageCommand = new SetLanguageCommand(languageReceiver);
+                Invoker invoker = new Invoker(setLanguageCommand);
+                invoker.Execute();
 
                 await _navigationService.NavigateToAsync<MoviesListViewModel>();
             });
